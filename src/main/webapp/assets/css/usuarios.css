@@ -1,0 +1,140 @@
+.offcanvas{
+
+    width:520px !important;
+
+}
+
+.offcanvas-header{
+
+    background:#f8f9fa;
+
+}
+
+.offcanvas-title{
+
+    color:#566770;
+
+}
+
+.input-group-text{
+
+    background:white;
+
+}
+
+.form-control{
+
+    height:45px;
+
+}
+
+.form-select{
+
+    height:45px;
+
+}
+
+.offcanvas-footer{
+
+    background:white;
+
+}
+
+.table thead{
+
+    background:#55666D;
+
+    color:white;
+
+}
+
+.table tbody tr{
+
+    transition:.2s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#f8f9fa;
+
+}
+
+.btn{
+
+    border-radius:10px;
+
+}
+
+.card{
+
+    border-radius:15px;
+
+}
+
+.badge{
+
+    font-size:.8rem;
+
+}
+
+.offcanvas{
+
+    width:520px !important;
+
+}
+
+.offcanvas-header{
+
+    background:#55666D;
+
+    color:white;
+
+}
+
+.offcanvas-title{
+
+    color:white;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:#9B745C;
+
+    box-shadow:0 0 0 .15rem rgba(155,116,92,.25);
+
+}
+
+.btn-primary{
+
+    background:#9B745C;
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:#86614B;
+
+}
+
+.btn-warning{
+
+    color:white;
+
+}
+
+.dataTables_wrapper .dataTables_filter{
+
+    display:none;
+
+}
+
+.dataTables_wrapper .dataTables_length{
+
+    display:none;
+
+}

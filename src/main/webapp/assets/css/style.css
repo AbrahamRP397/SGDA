@@ -1,0 +1,42 @@
+body{
+    background:#f4f6f9;
+    overflow-x:hidden;
+}
+
+.header-system{
+    background:#566770;
+}
+
+#sidebar{
+    width:260px;
+    min-height:100vh;
+    transition:.3s;
+}
+
+.content{
+    width:100%;
+}
+
+.list-group-item{
+    border:none;
+    padding:15px 20px;
+    font-weight:500;
+}
+
+.list-group-item.active{
+    background:#9b745d;
+    border-color:#9b745d;
+}
+
+.list-group-item:hover{
+    background:#f2f2f2;
+}
+
+.card{
+    border-radius:15px;
+}
+
+footer{
+    background:white;
+    border-top:1px solid #ddd;
+}

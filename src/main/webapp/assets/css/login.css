@@ -1,0 +1,60 @@
+body{
+    background-image: url("/assets/img/loginBG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.container,
+nav{
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.navbar{
+
+    background:#566770;
+
+}
+
+.card{
+
+    border-radius:20px;
+
+}
+
+.card img{
+
+    margin-bottom:15px;
+
+}
+
+.btn-primary{
+
+    background:#9C745C;
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:#84604D;
+
+}
