@@ -36,3 +36,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Secretos y configuración local ###
+src/main/resources/credentials.properties
+src/main/resources/wallet/
+
+### Archivos locales de IntelliJ ###
+.idea/
