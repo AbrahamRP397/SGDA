@@ -1,0 +1,377 @@
+/*
+ * Hoja de estilos técnica: modals.css.
+ * Responsabilidad: define la presentación, estados responsivos y variantes visuales del componente.
+ * Autor: Dulce Janet Ríos Aguilar.
+ * Desde: 2026-08-24.
+ */
+/* ==========================================================
+   COMPONENTE: MODALES NEUMÓRFICOS
+   Estilos reutilizables para todos los modales del sistema
+   ========================================================== */
+
+.modal-neumorphic .modal-content {
+    background: var(--card-bg, #e0e5ec);
+    border: none;
+    border-radius: var(--radius, 20px);
+    box-shadow: var(--neumo-shadow, 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-neumorphic .modal-header {
+    border-bottom: 1px solid var(--border-color, rgba(163, 177, 198, 0.3));
+    padding: 18px 22px 14px;
+    transition: border-color 0.3s ease;
+}
+
+.modal-neumorphic .modal-header .modal-title {
+    color: var(--text-color, #2d3748);
+    font-weight: 700;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.modal-neumorphic .modal-header .btn-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: var(--card-bg, #e0e5ec);
+    box-shadow: var(--neumo-shadow, 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff);
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+    padding: 0;
+    border: none;
+}
+
+.modal-neumorphic .modal-header .btn-close:hover {
+    box-shadow: var(--neumo-shadow-hover, 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff);
+    transform: translateY(-2px);
+}
+
+.modal-neumorphic .modal-header .btn-close:active {
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transform: translateY(0);
+}
+
+.modal-neumorphic .modal-header .btn-close i {
+    color: var(--text-muted, #718096);
+    font-size: 18px;
+}
+
+.modal-neumorphic .modal-body {
+    padding: 22px;
+    color: var(--text-color, #2d3748);
+    transition: color 0.3s ease;
+}
+
+.modal-neumorphic .modal-footer {
+    border-top: 1px solid var(--border-color, rgba(163, 177, 198, 0.3));
+    padding: 14px 22px 18px;
+    gap: 12px;
+    transition: border-color 0.3s ease;
+}
+
+/* ----------------------------------------------
+   CAMPOS DE FORMULARIO
+   ---------------------------------------------- */
+.modal-neumorphic .form-label {
+    color: var(--text-color, #2d3748);
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.modal-neumorphic .form-control,
+.modal-neumorphic .form-select {
+    background: var(--input-bg, rgba(224, 229, 236, 0.6));
+    border: none;
+    border-radius: 12px;
+    padding: 9px 14px;
+    color: var(--text-color, #2d3748);
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transition: box-shadow 0.3s ease, transform 0.15s ease, background-color 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+}
+
+.modal-neumorphic .form-control:focus,
+.modal-neumorphic .form-select:focus {
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    outline: none;
+    transform: scale(1.01);
+    background: var(--input-bg-focus, rgba(224, 229, 236, 0.8));
+}
+
+.modal-neumorphic .form-control::placeholder {
+    color: var(--text-muted, #718096);
+    opacity: 0.7;
+}
+
+/* ----------------------------------------------
+   INPUT GROUP PARA CONTRASEÑA
+   ---------------------------------------------- */
+.modal-neumorphic .input-group {
+    background: var(--input-bg, rgba(224, 229, 236, 0.6));
+    border-radius: 12px;
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transition: background-color 0.3s ease;
+}
+
+.modal-neumorphic .input-group-text {
+    background: transparent;
+    border: none;
+    border-radius: 12px 0 0 12px;
+    color: var(--text-muted, #718096);
+    padding: 9px 12px;
+    transition: color 0.3s ease;
+}
+
+.modal-neumorphic .input-group .form-control {
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+.modal-neumorphic .input-group .form-control:focus {
+    box-shadow: none;
+    transform: none;
+}
+
+.modal-neumorphic .input-group .btn {
+    border-radius: 0 12px 12px 0;
+    background: transparent;
+    border: none;
+    color: var(--text-muted, #718096);
+    padding: 9px 12px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    box-shadow: none;
+}
+
+.modal-neumorphic .input-group .btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-color, #2d3748);
+    transform: none;
+    box-shadow: none;
+}
+
+html[data-theme="dark"] .modal-neumorphic .input-group .btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color, #e8eaf0);
+}
+
+/* ----------------------------------------------
+   BOTONES DE MODAL
+   ---------------------------------------------- */
+.modal-neumorphic .btn {
+    border: none;
+    border-radius: 12px;
+    padding: 9px 22px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    transition: box-shadow 0.2s ease, transform 0.15s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-neumorphic .btn-secondary {
+    background: var(--card-bg, #e0e5ec);
+    color: var(--text-muted, #718096);
+    box-shadow: var(--neumo-shadow, 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff);
+}
+
+.modal-neumorphic .btn-secondary:hover {
+    box-shadow: var(--neumo-shadow-hover, 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff);
+    transform: translateY(-2px);
+    color: var(--text-muted, #718096);
+}
+
+.modal-neumorphic .btn-secondary:active {
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transform: translateY(0);
+}
+
+.modal-neumorphic .btn-primary {
+    background: var(--card-bg, #e0e5ec);
+    color: #6390ff;
+    box-shadow: var(--neumo-shadow, 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff);
+}
+
+.modal-neumorphic .btn-primary:hover {
+    box-shadow: var(--neumo-shadow-hover, 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff);
+    transform: translateY(-2px);
+    color: #6390ff;
+}
+
+.modal-neumorphic .btn-primary:active {
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transform: translateY(0);
+}
+
+.modal-neumorphic .btn-danger {
+    background: var(--card-bg, #e0e5ec);
+    color: #ff6666;
+    box-shadow: var(--neumo-shadow, 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff);
+}
+
+.modal-neumorphic .btn-danger:hover {
+    box-shadow: var(--neumo-shadow-hover, 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff);
+    transform: translateY(-2px);
+    color: #ff6666;
+}
+
+.modal-neumorphic .btn-danger:active {
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transform: translateY(0);
+}
+
+.modal-neumorphic .btn-success {
+    background: var(--card-bg, #e0e5ec);
+    color: #57d38c;
+    box-shadow: var(--neumo-shadow, 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff);
+}
+
+.modal-neumorphic .btn-success:hover {
+    box-shadow: var(--neumo-shadow-hover, 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff);
+    transform: translateY(-2px);
+    color: #57d38c;
+}
+
+.modal-neumorphic .btn-success:active {
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+    transform: translateY(0);
+}
+
+/* ----------------------------------------------
+   DETALLES EN MODAL "VER MÁS"
+   ---------------------------------------------- */
+.modal-detail-row {
+    display: flex;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border-color, rgba(163, 177, 198, 0.2));
+    transition: border-color 0.3s ease;
+}
+
+.modal-detail-row:last-child {
+    border-bottom: none;
+}
+
+.modal-detail-label {
+    width: 130px;
+    flex-shrink: 0;
+    color: var(--text-muted, #718096);
+    font-weight: 600;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.modal-detail-value {
+    color: var(--text-color, #2d3748);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.modal-detail-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--input-bg, rgba(224, 229, 236, 0.6));
+    box-shadow: var(--neumo-shadow-inset, inset 3px 3px 7px #a3b1c6, inset -3px -3px 7px #ffffff);
+}
+
+.modal-detail-badge.active {
+    color: #57d38c;
+}
+.modal-detail-badge.inactive {
+    color: #ff6666;
+}
+.modal-detail-badge.warning {
+    color: #ffc857;
+}
+.modal-detail-badge.info {
+    color: #55d6ff;
+}
+
+/* ----------------------------------------------
+   TEMA CLARO - MODALES
+   ---------------------------------------------- */
+html[data-theme="light"] .modal-neumorphic .modal-content {
+    box-shadow: 16px 16px 34px rgba(163, 177, 198, 0.65), -12px -12px 28px rgba(255, 255, 255, 0.95);
+}
+
+html[data-theme="light"] .modal-neumorphic .btn,
+html[data-theme="light"] .modal-neumorphic .btn-close {
+    box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.65), -8px -8px 16px rgba(255, 255, 255, 0.95);
+}
+
+html[data-theme="light"] .modal-neumorphic .btn:hover,
+html[data-theme="light"] .modal-neumorphic .btn-close:hover {
+    box-shadow: 10px 10px 20px rgba(163, 177, 198, 0.7), -10px -10px 20px rgba(255, 255, 255, 0.98);
+}
+
+html[data-theme="light"] .modal-neumorphic .btn:active,
+html[data-theme="light"] .modal-neumorphic .btn-close:active {
+    box-shadow: inset 5px 5px 10px rgba(163, 177, 198, 0.6), inset -5px -5px 10px rgba(255, 255, 255, 0.85);
+}
+
+html[data-theme="light"] .modal-neumorphic .form-control,
+html[data-theme="light"] .modal-neumorphic .form-select,
+html[data-theme="light"] .modal-neumorphic .input-group,
+html[data-theme="light"] .modal-detail-badge {
+    box-shadow: inset 5px 5px 10px rgba(163, 177, 198, 0.6), inset -5px -5px 10px rgba(255, 255, 255, 0.85);
+}
+
+/* ----------------------------------------------
+   RESPONSIVIDAD - MODALES
+   ---------------------------------------------- */
+@media (max-width: 768px) {
+    .modal-neumorphic .modal-body {
+        padding: 18px;
+    }
+    .modal-detail-label {
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-neumorphic .modal-body {
+        padding: 14px;
+    }
+    .modal-neumorphic .modal-header {
+        padding: 14px 14px 10px;
+    }
+    .modal-neumorphic .modal-footer {
+        padding: 10px 14px 14px;
+        flex-wrap: wrap;
+    }
+    .modal-neumorphic .btn {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+    .modal-detail-label {
+        width: 80px;
+        font-size: 12px;
+    }
+    .modal-detail-value {
+        font-size: 13px;
+    }
+    .modal-detail-row {
+        padding: 8px 0;
+    }
+}
+
+.quick-metric-description {
+    color: var(--text-muted, #aab4c3);
+    line-height: 1.6;
+    opacity: 1;
+}
+
+[data-theme="dark"] .quick-metric-description,
+body.dark-mode .quick-metric-description {
+    color: #b8c0cc;
+}

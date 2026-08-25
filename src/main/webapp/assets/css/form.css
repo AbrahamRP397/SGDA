@@ -1,0 +1,1000 @@
+/*
+ * Hoja de estilos técnica: form.css.
+ * Responsabilidad: define la presentación, estados responsivos y variantes visuales del componente.
+ * Autor: Dulce Janet Ríos Aguilar.
+ * Desde: 2026-08-24.
+ */
+/*
+ * ==========================================================
+ * SGDA FORM
+ * Estilos reutilizables para formularios
+ * ==========================================================
+ *
+ * Incluye:
+ *
+ * - Campos de formulario.
+ * - Estados válidos e inválidos.
+ * - Mensajes visuales.
+ * - Botones con estado de carga.
+ * - Formularios bloqueados.
+ * - Compatibilidad con modo claro y oscuro.
+ * - Integración con Bootstrap.
+ * - Integración con inputs normales e input-group.
+ */
+
+
+/*
+ * ==========================================================
+ * VARIABLES DEL COMPONENTE
+ * ==========================================================
+ */
+
+:root {
+    --form-success: #57d38c;
+    --form-success-dark: #36ad6c;
+    --form-success-soft: rgba(87, 211, 140, 0.14);
+
+    --form-danger: #ff6666;
+    --form-danger-dark: #e84949;
+    --form-danger-soft: rgba(255, 102, 102, 0.14);
+
+    --form-warning: #ffc857;
+    --form-info: #6390ff;
+
+    --form-feedback-size: 0.82rem;
+    --form-transition: 0.2s ease;
+    --form-radius: 12px;
+}
+
+
+/*
+ * ==========================================================
+ * CONTENEDOR DE CAMPO
+ * ==========================================================
+ */
+
+.form-field,
+.js-form-field-group {
+    position: relative;
+    width: 100%;
+}
+
+.form-field + .form-field,
+.js-form-field-group + .js-form-field-group {
+    margin-top: 1rem;
+}
+
+
+/*
+ * ==========================================================
+ * ETIQUETAS
+ * ==========================================================
+ */
+
+.form-field .form-label,
+.js-form-field-group .form-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    margin-bottom: 7px;
+
+    color: var(--text-color);
+    font-size: 0.92rem;
+    font-weight: 600;
+
+    transition:
+            color var(--form-transition);
+}
+
+.required-marker,
+.form-required {
+    color: var(--form-danger);
+    font-weight: 700;
+}
+
+
+/*
+ * ==========================================================
+ * CAMPOS BASE
+ * ==========================================================
+ */
+
+.js-form-field.form-control,
+.js-form-field.form-select,
+.form-control.js-form-field,
+.form-select.js-form-field {
+    width: 100%;
+
+    border: 1px solid transparent;
+    border-radius: var(--form-radius);
+    outline: none;
+
+    background: var(--input-bg);
+    color: var(--text-color);
+
+    box-shadow: var(--neumo-shadow-inset);
+
+    transition:
+            border-color var(--form-transition),
+            color var(--form-transition),
+            background-color 0.3s ease,
+            box-shadow var(--form-transition),
+            opacity var(--form-transition);
+}
+
+.js-form-field.form-control::placeholder,
+.form-control.js-form-field::placeholder {
+    color: var(--text-muted);
+    opacity: 0.72;
+}
+
+.js-form-field.form-control:hover:not(:disabled):not([readonly]),
+.js-form-field.form-select:hover:not(:disabled),
+.form-control.js-form-field:hover:not(:disabled):not([readonly]),
+.form-select.js-form-field:hover:not(:disabled) {
+    border-color: rgba(99, 144, 255, 0.18);
+}
+
+.js-form-field.form-control:focus,
+.js-form-field.form-select:focus,
+.form-control.js-form-field:focus,
+.form-select.js-form-field:focus {
+    border-color: rgba(99, 144, 255, 0.4);
+    outline: none;
+
+    background: var(--input-bg);
+    color: var(--text-color);
+
+    box-shadow:
+            var(--neumo-shadow-inset),
+            0 0 0 2px rgba(99, 144, 255, 0.1);
+}
+
+
+/*
+ * ==========================================================
+ * SELECT
+ * ==========================================================
+ */
+
+.js-form-field.form-select,
+.form-select.js-form-field {
+    cursor: pointer;
+}
+
+.js-form-field.form-select option,
+.form-select.js-form-field option {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+
+/*
+ * ==========================================================
+ * TEXTAREA
+ * ==========================================================
+ */
+
+textarea.js-form-field {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/*
+ * ==========================================================
+ * ESTADO VÁLIDO
+ * ==========================================================
+ */
+
+.js-form-field.is-valid,
+.form-control.js-form-field.is-valid,
+.form-select.js-form-field.is-valid {
+    border-color: var(--form-success);
+
+    background-color: var(--input-bg);
+    color: var(--text-color);
+
+    box-shadow:
+            var(--neumo-shadow-inset),
+            0 0 0 2px var(--form-success-soft);
+
+    background-image: none;
+}
+
+.js-form-field.is-valid:focus,
+.form-control.js-form-field.is-valid:focus,
+.form-select.js-form-field.is-valid:focus {
+    border-color: var(--form-success-dark);
+
+    box-shadow:
+            var(--neumo-shadow-inset),
+            0 0 0 3px var(--form-success-soft);
+}
+
+.field-valid .form-label {
+    color: var(--form-success-dark);
+}
+
+
+/*
+ * ==========================================================
+ * ESTADO INVÁLIDO
+ * ==========================================================
+ */
+
+.js-form-field.is-invalid,
+.form-control.js-form-field.is-invalid,
+.form-select.js-form-field.is-invalid {
+    border-color: var(--form-danger);
+
+    background-color: var(--input-bg);
+    color: var(--text-color);
+
+    box-shadow:
+            var(--neumo-shadow-inset),
+            0 0 0 2px var(--form-danger-soft);
+
+    background-image: none;
+}
+
+.js-form-field.is-invalid:focus,
+.form-control.js-form-field.is-invalid:focus,
+.form-select.js-form-field.is-invalid:focus {
+    border-color: var(--form-danger-dark);
+
+    box-shadow:
+            var(--neumo-shadow-inset),
+            0 0 0 3px var(--form-danger-soft);
+}
+
+.field-invalid .form-label {
+    color: var(--form-danger);
+}
+
+
+/*
+ * ==========================================================
+ * FEEDBACK
+ * ==========================================================
+ */
+
+.valid-feedback,
+.invalid-feedback {
+    width: 100%;
+
+    margin-top: 7px;
+
+    font-size: var(--form-feedback-size);
+    font-weight: 500;
+    line-height: 1.35;
+
+    animation: formFeedbackAppear 0.18s ease;
+}
+
+.valid-feedback {
+    color: var(--form-success-dark);
+}
+
+.invalid-feedback {
+    color: var(--form-danger);
+}
+
+.js-form-field.is-valid ~ .valid-feedback,
+.form-control.js-form-field.is-valid ~ .valid-feedback,
+.form-select.js-form-field.is-valid ~ .valid-feedback {
+    display: block;
+}
+
+.js-form-field.is-invalid ~ .invalid-feedback,
+.form-control.js-form-field.is-invalid ~ .invalid-feedback,
+.form-select.js-form-field.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+@keyframes formFeedbackAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/*
+ * ==========================================================
+ * FEEDBACK CON ÍCONOS
+ * ==========================================================
+ */
+
+.valid-feedback::before,
+.invalid-feedback::before {
+    display: inline-block;
+    margin-right: 5px;
+
+    font-family: "bootstrap-icons";
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+.valid-feedback::before {
+    content: "\F26A";
+}
+
+.invalid-feedback::before {
+    content: "\F33A";
+}
+
+
+/*
+ * ==========================================================
+ * INPUT PASSWORD
+ * ==========================================================
+ */
+
+.form-password-group{
+
+    display:flex;
+    align-items:center;
+
+    width:100%;
+
+    overflow:hidden;
+
+    border:1px solid transparent;
+    border-radius:var(--form-radius);
+
+    background:var(--input-bg);
+
+    box-shadow:var(--neumo-shadow-inset);
+
+    transition:
+            border-color .2s,
+            box-shadow .2s,
+            background-color .3s;
+
+}
+
+
+/*
+ * ÍCONOS
+ */
+
+.form-password-group .input-group-text,
+.form-password-group .mostrarPassword{
+
+    width:48px;
+    min-width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0;
+
+    border:none;
+
+    background:transparent;
+
+    color:var(--text-muted);
+
+    box-shadow:none;
+
+}
+
+
+.form-password-group .mostrarPassword:hover{
+
+    color:#6390ff;
+
+}
+
+
+/*
+ * INPUT
+ */
+
+.form-password-group .form-control{
+
+    flex:1;
+
+    min-width:0;
+
+    border:none !important;
+    outline:none !important;
+
+    background:transparent !important;
+
+    box-shadow:none !important;
+
+    padding-left:12px;
+    padding-right:12px;
+
+}
+
+
+/*
+ * FOCUS
+ */
+
+.form-password-group:focus-within{
+
+    border-color:rgba(99,144,255,.45);
+
+    box-shadow:
+
+            var(--neumo-shadow-inset),
+
+            0 0 0 2px rgba(99,144,255,.12);
+
+}
+
+
+/*
+ * VÁLIDO
+ */
+
+.form-password-group.is-valid{
+
+    border-color:var(--form-success);
+
+    box-shadow:
+
+            var(--neumo-shadow-inset),
+
+            0 0 0 2px rgba(87,211,140,.14);
+
+}
+
+.form-password-group.is-valid
+.input-group-text,
+
+.form-password-group.is-valid
+.mostrarPassword{
+
+    color:var(--form-success);
+
+}
+
+
+/*
+ * INVÁLIDO
+ */
+
+.form-password-group.is-invalid{
+
+    border-color:var(--form-danger);
+
+    box-shadow:
+
+            var(--neumo-shadow-inset),
+
+            0 0 0 2px rgba(255,102,102,.14);
+
+}
+
+.form-password-group.is-invalid
+.input-group-text,
+
+.form-password-group.is-invalid
+.mostrarPassword{
+
+    color:var(--form-danger);
+
+}
+
+
+/*
+ * EL INPUT YA NO TIENE BORDE PROPIO
+ */
+
+.form-password-group
+.form-control.is-valid,
+
+.form-password-group
+.form-control.is-invalid{
+
+    border:none !important;
+
+    background:transparent !important;
+
+    box-shadow:none !important;
+
+}
+
+
+/*
+ * MENSAJES
+ */
+
+.form-password-group
++
+.valid-feedback,
+
+.form-password-group
++
+.invalid-feedback{
+
+    margin-top:8px;
+
+}
+
+
+/*
+ * ==========================================================
+ * CHECKBOX Y RADIO
+ * ==========================================================
+ */
+
+.form-check-input.js-form-field {
+    border-color: transparent;
+    background-color: var(--input-bg);
+
+    box-shadow: var(--neumo-shadow-inset);
+
+    cursor: pointer;
+
+    transition:
+            border-color var(--form-transition),
+            background-color var(--form-transition),
+            box-shadow var(--form-transition);
+}
+
+.form-check-input.js-form-field:checked {
+    border-color: var(--form-info);
+    background-color: var(--form-info);
+}
+
+.form-check-input.js-form-field.is-valid {
+    border-color: var(--form-success);
+}
+
+.form-check-input.js-form-field.is-invalid {
+    border-color: var(--form-danger);
+}
+
+.form-check-input.js-form-field:focus {
+    box-shadow:
+            var(--neumo-shadow-inset),
+            0 0 0 2px rgba(99, 144, 255, 0.12);
+}
+
+
+/*
+ * ==========================================================
+ * CAMPOS DESHABILITADOS O BLOQUEADOS
+ * ==========================================================
+ */
+
+.js-form-field:disabled,
+.js-form-field[readonly],
+.js-form-field.is-form-locked {
+    cursor: not-allowed;
+    opacity: 0.68;
+}
+
+.form-select.is-form-locked {
+    cursor: wait;
+}
+
+.js-form.is-locked,
+.js-form.is-submitting {
+    cursor: wait;
+}
+
+.js-form.is-submitting .js-form-field,
+.js-form.is-locked .js-form-field {
+    opacity: 0.72;
+}
+
+
+/*
+ * ==========================================================
+ * BOTÓN DE ENVÍO
+ * ==========================================================
+ */
+
+.js-form-submit {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 40px;
+
+    transition:
+            opacity var(--form-transition),
+            transform var(--form-transition),
+            box-shadow var(--form-transition),
+            background-color var(--form-transition),
+            color var(--form-transition);
+}
+
+.js-form-submit.is-loading,
+button.is-loading,
+.btn.is-loading {
+    cursor: wait;
+    pointer-events: none;
+
+    opacity: 0.82;
+    transform: translateY(0);
+
+    box-shadow: var(--neumo-shadow-inset);
+}
+
+.js-form-submit.is-loading:hover,
+button.is-loading:hover,
+.btn.is-loading:hover {
+    transform: translateY(0);
+    box-shadow: var(--neumo-shadow-inset);
+}
+
+
+/*
+ * ==========================================================
+ * SPINNER DE CARGA
+ * ==========================================================
+ */
+
+.is-loading .spinner-border {
+    width: 1rem;
+    height: 1rem;
+
+    border-width: 0.14em;
+}
+
+.form-loading-text {
+    display: inline-block;
+    line-height: 1;
+}
+
+
+/*
+ * ==========================================================
+ * FORMULARIO EN PROCESO
+ * ==========================================================
+ */
+
+.js-form.is-submitting {
+    position: relative;
+}
+
+.js-form.is-submitting::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 10;
+
+    cursor: wait;
+    background: transparent;
+}
+
+
+/*
+ * ==========================================================
+ * MENSAJE GENERAL DEL FORMULARIO
+ * ==========================================================
+ */
+
+.form-message {
+    display: none;
+
+    margin-bottom: 16px;
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+
+    animation: formFeedbackAppear 0.18s ease;
+}
+
+.form-message.show {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-message-success {
+    color: var(--form-success-dark);
+    background: var(--form-success-soft);
+}
+
+.form-message-danger {
+    color: var(--form-danger);
+    background: var(--form-danger-soft);
+}
+
+.form-message-info {
+    color: var(--form-info);
+    background: rgba(99, 144, 255, 0.12);
+}
+
+
+/*
+ * ==========================================================
+ * INDICADOR DE CONTADOR
+ * ==========================================================
+ */
+
+.form-character-counter {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    text-align: right;
+}
+
+.form-character-counter.is-near-limit {
+    color: var(--form-warning);
+}
+
+.form-character-counter.is-limit-reached {
+    color: var(--form-danger);
+}
+
+
+/*
+ * ==========================================================
+ * AYUDA DEL CAMPO
+ * ==========================================================
+ */
+
+.form-help,
+.form-text {
+    margin-top: 6px;
+
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+
+/*
+ * ==========================================================
+ * TEMA CLARO
+ * ==========================================================
+ */
+
+html[data-theme="light"] .js-form-field.form-control,
+html[data-theme="light"] .js-form-field.form-select,
+html[data-bs-theme="light"] .js-form-field.form-control,
+html[data-bs-theme="light"] .js-form-field.form-select {
+    color-scheme: light;
+}
+
+html[data-theme="light"] .js-form-field.is-valid,
+html[data-bs-theme="light"] .js-form-field.is-valid {
+    box-shadow:
+            inset 4px 4px 8px rgba(163, 177, 198, 0.5),
+            inset -4px -4px 8px rgba(255, 255, 255, 0.88),
+            0 0 0 2px var(--form-success-soft);
+}
+
+html[data-theme="light"] .js-form-field.is-invalid,
+html[data-bs-theme="light"] .js-form-field.is-invalid {
+    box-shadow:
+            inset 4px 4px 8px rgba(163, 177, 198, 0.5),
+            inset -4px -4px 8px rgba(255, 255, 255, 0.88),
+            0 0 0 2px var(--form-danger-soft);
+}
+
+
+/*
+ * ==========================================================
+ * TEMA OSCURO
+ * ==========================================================
+ */
+
+html[data-theme="dark"] .js-form-field.form-control,
+html[data-theme="dark"] .js-form-field.form-select,
+html[data-bs-theme="dark"] .js-form-field.form-control,
+html[data-bs-theme="dark"] .js-form-field.form-select {
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] .valid-feedback,
+html[data-bs-theme="dark"] .valid-feedback {
+    color: #71e3a2;
+}
+
+html[data-theme="dark"] .invalid-feedback,
+html[data-bs-theme="dark"] .invalid-feedback {
+    color: #ff8585;
+}
+
+html[data-theme="dark"] .field-valid .form-label,
+html[data-bs-theme="dark"] .field-valid .form-label {
+    color: #71e3a2;
+}
+
+html[data-theme="dark"] .field-invalid .form-label,
+html[data-bs-theme="dark"] .field-invalid .form-label {
+    color: #ff8585;
+}
+
+html[data-theme="dark"] .js-form-field.is-valid,
+html[data-bs-theme="dark"] .js-form-field.is-valid {
+    box-shadow:
+            inset 4px 4px 8px rgba(0, 0, 0, 0.38),
+            inset -4px -4px 8px rgba(255, 255, 255, 0.025),
+            0 0 0 2px rgba(87, 211, 140, 0.14);
+}
+
+html[data-theme="dark"] .js-form-field.is-invalid,
+html[data-bs-theme="dark"] .js-form-field.is-invalid {
+    box-shadow:
+            inset 4px 4px 8px rgba(0, 0, 0, 0.38),
+            inset -4px -4px 8px rgba(255, 255, 255, 0.025),
+            0 0 0 2px rgba(255, 102, 102, 0.14);
+}
+
+
+/*
+ * ==========================================================
+ * QUITAR ESTILOS NATIVOS DE BOOTSTRAP
+ * ==========================================================
+ */
+
+.was-validated .form-control:valid,
+.form-control.is-valid,
+.was-validated .form-select:valid,
+.form-select.is-valid {
+    padding-right: 0.75rem;
+    background-image: none;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid,
+.was-validated .form-select:invalid,
+.form-select.is-invalid {
+    padding-right: 0.75rem;
+    background-image: none;
+}
+
+
+/*
+ * ==========================================================
+ * AUTOCOMPLETADO DEL NAVEGADOR
+ * ==========================================================
+ */
+
+.js-form-field:-webkit-autofill,
+.js-form-field:-webkit-autofill:hover,
+.js-form-field:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text-color);
+
+    box-shadow:
+            0 0 0 1000px var(--input-bg) inset,
+            var(--neumo-shadow-inset);
+
+    transition:
+            background-color 9999s ease-in-out 0s;
+}
+
+
+/*
+ * ==========================================================
+ * RESPONSIVE
+ * ==========================================================
+ */
+
+@media (max-width: 768px) {
+
+    .form-field .form-label,
+    .js-form-field-group .form-label {
+        font-size: 0.88rem;
+    }
+
+    .valid-feedback,
+    .invalid-feedback {
+        font-size: 0.78rem;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .js-form-field.form-control,
+    .js-form-field.form-select,
+    .form-control.js-form-field,
+    .form-select.js-form-field {
+        font-size: 0.92rem;
+    }
+
+    .js-form-submit {
+        width: 100%;
+    }
+
+}
+
+
+/*
+ * ==========================================================
+ * REDUCIR MOVIMIENTO
+ * ==========================================================
+ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .js-form-field,
+    .js-form-submit,
+    .valid-feedback,
+    .invalid-feedback,
+    .form-message {
+        transition: none;
+        animation: none;
+    }
+
+}
+
+
+/*
+ * ==========================================================
+ * UTILIDADES
+ * ==========================================================
+ */
+
+.form-no-feedback .valid-feedback,
+.form-no-feedback .invalid-feedback {
+    display: none !important;
+}
+
+.form-hide-valid .valid-feedback {
+    display: none !important;
+}
+
+.form-hide-valid .js-form-field.is-valid {
+    border-color: transparent;
+
+    box-shadow: var(--neumo-shadow-inset);
+}
+
+.form-field-inline {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.form-field-inline > .form-label {
+    min-width: 130px;
+    padding-top: 10px;
+}
+
+.form-field-inline > .form-field-control {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 576px) {
+
+    .form-field-inline {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .form-field-inline > .form-label {
+        min-width: 0;
+        padding-top: 0;
+    }
+
+    .form-field-inline > .form-field-control {
+        width: 100%;
+    }
+
+}

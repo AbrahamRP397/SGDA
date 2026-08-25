@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Contexto de Tomcat para SGDA. Define un nombre propio para la cookie de sesión
+  y evita que se confunda con sesiones de otras aplicaciones desplegadas.
+
+  Autor: Dulce Janet Ríos Aguilar
+  Desde: 2026-08-24
+-->
+<Context sessionCookieName="SGDASESSIONID" />

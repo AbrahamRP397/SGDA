@@ -1,60 +1,752 @@
-body{
-    background-image: url("/assets/img/loginBG.jpg");
+/*
+ * Hoja de estilos técnica: login.css.
+ * Responsabilidad: define la presentación, estados responsivos y variantes visuales del componente.
+ * Autor: Dulce Janet Ríos Aguilar.
+ * Desde: 2026-08-24.
+ */
+/* =================================
+   VARIABLES NEUMORFISMO + GLASS
+================================= */
+:root {
+    --bg-color: rgba(224, 229, 236, 0.85);
+    --shadow-light: rgba(255, 255, 255, 0.7);
+    --shadow-dark: rgba(163, 177, 198, 0.6);
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --radius: 20px;
+    --neumo-shadow: 8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+    --neumo-shadow-inset: inset 3px 3px 7px var(--shadow-dark),
+    inset -3px -3px 7px var(--shadow-light);
+    --neumo-shadow-hover: 12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+    --overlay-color: rgba(0, 0, 0, 0.25);
+    --input-bg: rgba(224, 229, 236, 0.6);
+    --input-bg-focus: rgba(224, 229, 236, 0.8);
+    --card-bg: rgba(224, 229, 236, 0.85);
+    --login-bg-image: url("../img/loginBG.jpg");
+    --logo-bg: #EDEDED;
+    --logo-stroke: #C6C6C6;
+    --logo-primary: #4E6166;
+    --logo-secondary: #B2B2B2;
+}
+
+/* =================================
+   TEMA OSCURO PARA LOGIN
+================================= */
+[data-theme="dark"] {
+    --bg-color: rgba(26, 29, 35, 0.92);
+    --shadow-light: rgba(42, 45, 53, 0.7);
+    --shadow-dark: rgba(13, 15, 18, 0.8);
+    --text-color: #e8eaf0;
+    --text-muted: #9aa2b0;
+    --overlay-color: rgba(0, 0, 0, 0.6);
+    --input-bg: rgba(26, 29, 35, 0.7);
+    --input-bg-focus: rgba(26, 29, 35, 0.9);
+    --card-bg: rgba(26, 29, 35, 0.92);
+    --login-bg-image: url("../img/loginBG-dark.jpg");
+    --logo-bg: #2a2d35;
+    --logo-stroke: #4a4d55;
+    --logo-primary: #8a9aad;
+    --logo-secondary: #5a6a7a;
+}
+
+/* =================================
+   FONDO CON IMAGEN
+================================= */
+body {
+    background-image: var(--login-bg-image);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 0.8s ease, background-color 0.8s ease;
 }
 
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.45);
-
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--overlay-color);
+    z-index: 0;
+    transition: background-color 0.3s ease;
 }
 
-.container,
-nav{
-
-    position:relative;
-
-    z-index:10;
-
+/* =================================
+   CONTENEDOR PRINCIPAL
+================================= */
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.navbar{
-
-    background:#566770;
-
+.row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.card{
-
-    border-radius:20px;
-
+/* =================================
+   TARJETA NEUMORFICA CON EFECTO VIDRIO
+================================= */
+.card {
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: var(--card-bg);
+    box-shadow: var(--neumo-shadow);
+    transition: box-shadow 0.4s ease, transform 0.3s ease, background-color 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.card img{
-
-    margin-bottom:15px;
-
+.card:hover {
+    box-shadow: var(--neumo-shadow-hover);
 }
 
-.btn-primary{
+.card-body {
+    padding: 2.5rem;
+}
 
-    background:#9C745C;
+/* =================================
+   LOGO
+================================= */
+#logoSistema {
+    width: 200px;
+    max-width: 80%;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+}
 
+.logo-cerrar {
+    transform: scale(0.75);
+    opacity: 0.25;
+}
+
+.logo-abrir {
+    animation: abrirLogo 0.8s ease forwards;
+}
+
+@keyframes abrirLogo {
+    0% {
+        transform: scale(0.75);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.18);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =================================
+   TEXTOS
+================================= */
+.card-body h3 {
+    color: var(--text-color);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* =================================
+   INPUTS NEUMORFICOS CON FONDO TRANSPARENTE
+================================= */
+.form-control {
+    background: var(--input-bg);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: var(--text-color);
+    box-shadow: inset 3px 3px 7px var(--shadow-dark),
+    inset -3px -3px 7px var(--shadow-light);
+    transition: box-shadow 0.3s ease, transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: inset 2px 2px 5px var(--shadow-dark),
+    inset -2px -2px 5px var(--shadow-light);
+    outline: none;
+    transform: scale(1.01);
+    background: var(--input-bg-focus);
+    color: var(--text-color) !important;
+    caret-color: var(--text-color);
+    border-color: transparent;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.form-label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+/* =================================
+   INPUT GROUP NEUMORFICO
+================================= */
+.input-group {
+    background: var(--input-bg);
+    border-radius: 12px;
+    box-shadow: inset 3px 3px 7px var(--shadow-dark),
+    inset -3px -3px 7px var(--shadow-light);
+    transition: background-color 0.3s ease;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    border-radius: 12px 0 0 12px;
+    color: var(--text-muted);
+    padding: 12px 14px;
+    transition: color 0.3s ease;
+}
+
+.input-group .form-control {
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+.input-group .form-control:focus {
+    box-shadow: none;
+    transform: none;
+    color: var(--text-color) !important;
+    caret-color: var(--text-color);
+}
+
+.input-group .btn {
+    border-radius: 0 12px 12px 0;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 12px 14px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-group .btn:hover {
+    background: rgba(0,0,0,0.05);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .input-group .btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-color);
+}
+
+/* =================================
+   BOTÓN LOGIN NEUMÓRFICO
+================================= */
+
+.login-button {
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 14px;
+    outline: none;
+
+    background: var(--card-bg);
+    color: var(--text-color);
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+            8px 8px 16px var(--shadow-dark),
+            -8px -8px 16px var(--shadow-light);
+
+    transition:
+            box-shadow 0.15s ease,
+            transform 0.15s ease,
+            background-color 0.3s ease,
+            color 0.3s ease;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* Quita el destello azul en móviles */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Al pasar el cursor */
+
+.login-button:hover {
+    background: var(--card-bg);
+    color: var(--text-color);
+
+    box-shadow:
+            10px 10px 20px var(--shadow-dark),
+            -10px -10px 20px var(--shadow-light);
+}
+
+/* Al presionar: se hunde */
+
+.login-button:active {
+    transform: translateY(1px);
+
+    background: var(--card-bg);
+    color: var(--text-color);
+
+    box-shadow:
+            inset 5px 5px 10px var(--shadow-dark),
+            inset -5px -5px 10px var(--shadow-light);
+}
+
+/* Evitar cualquier borde o color azul */
+
+.login-button:focus,
+.login-button:focus-visible {
+    outline: none;
+    border: none;
+
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* Mantener el efecto hundido al hacer clic */
+
+.login-button:focus:active,
+.login-button:focus-visible:active {
+    box-shadow:
+            inset 5px 5px 10px var(--shadow-dark),
+            inset -5px -5px 10px var(--shadow-light);
+}
+
+/* Icono */
+
+.login-button i {
+    font-size: 18px;
+    color: inherit;
+
+    transition: transform 0.15s ease;
+}
+
+.login-button:active i,
+.login-button:active span {
+    transform: translateY(1px);
+}
+
+/* Botón deshabilitado */
+
+.login-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+
+    box-shadow:
+            inset 3px 3px 7px var(--shadow-dark),
+            inset -3px -3px 7px var(--shadow-light);
+}
+
+.btn-outline-secondary{
+    background:transparent;
     border:none;
-
+    border-radius:0 12px 12px 0;
+    color:var(--text-muted);
+    box-shadow:none;
+    transition:.25s;
 }
 
-.btn-primary:hover{
-
-    background:#84604D;
-
+.btn-outline-secondary:hover{
+    background:rgba(255,255,255,.05);
+    color:#6390ff;
 }
+
+[data-theme="light"] .btn-outline-secondary:hover{
+    background:rgba(65,111,221,.08);
+    color:#416fdd;
+}
+
+/* =================================
+   ENLACES
+================================= */
+.text-decoration-none {
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.text-decoration-none:hover {
+    color: var(--text-color);
+    text-decoration: none !important;
+}
+
+/* =================================
+   ALERTAS NEUMORFICAS
+================================= */
+.alert {
+    border-radius: 12px;
+    border: none;
+    background: var(--input-bg);
+    box-shadow: var(--neumo-shadow-inset);
+    padding: 10px 16px;
+    transition: background-color 0.3s ease;
+}
+
+.alert-danger {
+    color: #c0392b;
+}
+
+.alert-danger i {
+    color: #c0392b;
+}
+
+.alert-info {
+    color: #2980b9;
+}
+
+.alert-info i {
+    color: #2980b9;
+}
+
+.alert-success {
+    color: #27ae60;
+}
+
+.alert-success i {
+    color: #27ae60;
+}
+
+.alert i {
+    font-size: 1.1rem;
+}
+
+/* =================================
+   ICONOS DE EXITO (password-reset-success)
+================================= */
+.bi-check-circle-fill {
+    filter: drop-shadow(0 4px 12px rgba(39, 174, 96, 0.3));
+    color: #27ae60;
+}
+
+/* =================================
+   RESPONSIVIDAD
+================================= */
+
+/* Móvil pequeño (hasta 400px) */
+@media (max-width: 400px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    #logoSistema {
+        width: 140px;
+    }
+
+    .card-body h3 {
+        font-size: 1.2rem;
+    }
+
+    .form-control {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .input-group-text {
+        padding: 10px 12px;
+    }
+
+    .alert {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+}
+
+/* Móvil (401px - 768px) */
+@media (min-width: 401px) and (max-width: 768px) {
+    .card-body {
+        padding: 2rem;
+    }
+
+    #logoSistema {
+        width: 170px;
+    }
+
+    .card-body h3 {
+        font-size: 1.4rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Tablet (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .card-body {
+        padding: 2.2rem;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .col-lg-5 {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+
+    .col-md-6 {
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+
+    #logoSistema {
+        width: 180px;
+    }
+}
+
+/* Escritorio (1025px - 1366px) */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .card-body {
+        padding: 2.5rem;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 35%;
+        max-width: 35%;
+    }
+
+    .col-lg-5 {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+}
+
+/* Pantallas grandes (1367px - 1920px) */
+@media (min-width: 1367px) and (max-width: 1920px) {
+    .card-body {
+        padding: 3rem;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+
+    .col-lg-5 {
+        flex: 0 0 35%;
+        max-width: 35%;
+    }
+
+    #logoSistema {
+        width: 220px;
+    }
+
+    .card-body h3 {
+        font-size: 1.8rem;
+    }
+
+    .form-control {
+        padding: 14px 18px;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        padding: 14px;
+        font-size: 1.05rem;
+    }
+}
+
+/* Pantallas 4K (1921px en adelante) */
+@media (min-width: 1921px) {
+    .col-lg-4 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .col-lg-5 {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+
+    .card-body {
+        padding: 3.5rem;
+    }
+
+    #logoSistema {
+        width: 250px;
+    }
+
+    .card-body h3 {
+        font-size: 2rem;
+    }
+
+    .form-control {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        padding: 16px;
+        font-size: 1.1rem;
+    }
+
+    .input-group-text {
+        padding: 16px 20px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Ajustes para orientación horizontal en móvil */
+@media (max-height: 600px) and (orientation: landscape) {
+    .container {
+        min-height: 100vh;
+        padding: 10px 0;
+    }
+
+    .card-body {
+        padding: 1.2rem;
+    }
+
+    #logoSistema {
+        width: 120px;
+        margin-bottom: 8px;
+    }
+
+    .card-body h3 {
+        font-size: 1rem;
+        margin-top: 8px !important;
+    }
+
+    .mb-3 {
+        margin-bottom: 10px !important;
+    }
+
+    .mb-4 {
+        margin-bottom: 12px !important;
+    }
+
+    .form-control {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .btn-primary {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .input-group-text {
+        padding: 6px 10px;
+    }
+
+    .mt-4 {
+        margin-top: 10px !important;
+    }
+
+    .alert {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mejora para lectores de pantalla */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.neumo-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 14px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: var(--neumo-shadow);
+    line-height: 1.5;
+}
+
+.neumo-alert i {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 20px;
+}
+
+.neumo-alert-error {
+    color: #ff6666;
+}
+
+.neumo-alert-error .neumo-alert-text {
+    color: var(--text-color);
+}
+
+.neumo-alert-info {
+    color: #6390ff;
+}
+
+.neumo-alert-info .neumo-alert-text {
+    color: var(--text-color);
+}
+
+.neumo-alert-warning {
+    color: #d4a017;
+}
+
+.neumo-alert-warning .neumo-alert-text {
+    color: var(--text-color);
+}
+
+
